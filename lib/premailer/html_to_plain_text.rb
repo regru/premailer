@@ -70,7 +70,7 @@ module HtmlToPlainText
     txt.gsub!(/<br[\/ ]*>/i, "\n")
 
     # strip remaining tags
-    txt.gsub!(/<\/?[^>]*>/, '')
+    txt.gsub!(/<\S\/?[^>]*>/, '')
 
     txt = word_wrap(txt, line_length)
 
