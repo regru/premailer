@@ -81,7 +81,7 @@ module HtmlToPlainText
     txt.gsub!(/<br[\/ ]*>/i, "\n")
 
     # strip remaining tags
-    txt.gsub!(/<\/?[^>]*>/, '')
+    txt.gsub!(/<\S\/?[^>]*>/, '')
 
     # decode HTML entities
     he = HTMLEntities.new

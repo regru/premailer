@@ -35,6 +35,12 @@ END_HTML
     assert_match /Test/, premailer.to_plain_text
   end
 
+  def test_to_plain_text_with_non_tag_gt_lt_characters
+    html = "<p>Here is some content with a < (less than) and > (greater than) sign</p>"
+    premailer = Premailer.new(html, :with_html_string => true, :line_length => 10000)
+    assert_equal "Here is some content with a < (less than) and > (greater than) sign", premailer.to_plain_text
+  end
+
   def test_specialchars
     assert_plaintext 'cédille garçon & à ñ', 'c&eacute;dille gar&#231;on &amp; &agrave; &ntilde;'
   end
